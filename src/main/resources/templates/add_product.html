@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Inventory</title>
+<link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<form method="post" action="/saveProduct">
+		<h1 class="alignCenter"> Add Product to Inventory </h1>
+		<table class="productTable" align="center">
+			<tr>
+				<th class="productTableCell" colspan="3">Product Details</th>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="productName">Product Name </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input name = "productName" id="productName" placeholder="Enter Product Name" th:value="${product.productName}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="productType">Product Type </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input name = "productType" id="productType" placeholder="Enter Product Type" th:value="${product.productType}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="productVariety">Product Variety </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input name = "productVariety" id="productVariety" placeholder="Enter Product Variety" th:value="${product.productVariety}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="price">Price </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input type ="number" name = "price" id="price" maxlength="10" placeholder="Enter Price" th:value="${product.price}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="gender">Available Quantity </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input type="number" name = "availableQuantity" id="availableQuantity"   maxlength="5" placeholder="Enter Available Quantity" th:value="${product.availableQuantity}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell"> <label for="packageType">Package Type </label></td>
+				<td class="productTableCell" width="3px">:</td>
+				<td class="productTableCell"> <input name = "packageType" id="packageType" placeholder="Enter Package Type" th:value="${product.packageType}" required /> </td>
+			</tr>
+			<tr>
+				<td class="productTableCell" colspan="2"><button type="submit" class="editBtn">Save</button></td>
+				<td class="productTableCell"><button type="button" class="deleteBtn" th:onclick="|window.location.href='@{/products}'|" >Cancel</button></td>
+			</tr>
+		</table>
+		
+		</form>
+</body>
+</html>

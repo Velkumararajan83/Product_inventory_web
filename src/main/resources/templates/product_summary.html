@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Inventory</title>
+
+<link href="/css/style.css" rel="stylesheet" />
+</head>
+	<body>
+		<form method="post">
+			<h1 class="alignCenter"> Product Inventory </h1>
+			<h3 class="alignCenter">To add a product to the inventory please <a th:href="@{/addProduct}">click here</a></h3>
+			<div id="productDetails" th:if="${not #lists.isEmpty(productList)}">
+				<table class="productTable" align="center">
+					<tr>
+						<th class="productTableCell">Product Number</th>
+						<th class="productTableCell">Product Name</th>
+						<th class="productTableCell">Product Type</th>
+						<th class="productTableCell">Product Variety</th>
+						<th class="productTableCell">Price </th>
+						<th class="productTableCell">Available Quantity </th>
+						<th class="productTableCell">Package Type</th>
+						<th class="productTableCell" colspan="2">Action</th>
+						
+					</tr>
+					<tr th:each="product : ${productList}">
+						<td class="productTableCell" th:text="${product.id}"></td>
+						<td class="productTableCell" th:text="${product.productName}"></td>
+						<td class="productTableCell" th:text="${product.productType}"></td>
+						<td class="productTableCell" th:text="${product.productVariety}"></td>
+						<td class="productTableCell" th:text="${product.price}"></td>
+						<td class="productTableCell" th:text="${product.availableQuantity}"></td>
+						<td class="productTableCell" th:text="${product.packageType}"></td>
+						<td class="productTableCell"><button type="button" class="editBtn" th:onclick="|window.location.href='@{/editProduct/{id}(id=${product.id})}'|" >Edit</button></td>
+						<td class="productTableCell"><button type="button" class="deleteBtn" th:onclick="|window.location.href='@{/deleteProduct/{id}(id=${product.id})}'|" >Delete</button></td>
+					</tr>
+				</table>
+			</div>
+			<h2 class="alignCenter">
+				<div class="greenFont">
+					<input type = "text" th:text="${successMsg}" />
+				</div>
+			</h2>
+		</form>
+	</body>
+</html>
